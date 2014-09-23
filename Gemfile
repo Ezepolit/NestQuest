@@ -38,3 +38,17 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Paperclip Gem
+gem 'paperclip' , '~> 4.2'
+
+# devise for users gem
+gem 'devise'
+
+#debugging
+gem 'better_errors'
+gem 'binding_of_caller'
+
+# bootsrap SaSS
+gem 'bootstrap-sass', '~> 3.2.0'
+
+

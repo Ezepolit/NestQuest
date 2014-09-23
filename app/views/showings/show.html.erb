@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+<%= image_tag @showing.image.url(:thumb) %>
+<p>
+  <strong>Date:</strong>
+  <%= @showing.date %>
+</p>
+  <%= debug(@showing)%>
+<p>
+  <strong>Time:</strong>
+  <%= @showing.time %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @showing.duration %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @showing.location %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @showing.details %>
+</p>
+
+
+<h1>Listing apartments</h1>
+
+
+<% @showing.apartments.each do |apartment| %>
+  <p> <%= image_tag apartment.image %></p>
+  <p> <%= apartment.title %></p>
+  <p> <%= apartment.neighborhood %></p>
+  <p> <%= apartment.price %></p>
+  <p> <%= apartment.bedrooms %></p>
+  <p> <%= apartment.bathrooms %></p>
+  <p> <%= apartment.description %></p>
+  <p> <%= apartment.move_date %></p>
+       
+<% end %>   
+
+
+
+<br>
+
+
+
+
+<%= link_to 'Edit', edit_showing_path(@showing) %> |
+<%= link_to 'Back', showings_path %>

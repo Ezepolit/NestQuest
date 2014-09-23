@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+<%= image_tag @broker.avatar.url(:thumb) %>
+<p>
+  <strong>First name:</strong>
+  <%= @broker.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @broker.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @broker.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @broker.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @broker.city %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @broker.zip %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @broker.phone %>
+</p>
+
+<h1>Listing reviews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>User Review</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @broker.reviews.each do |review| %>
+      <tr>
+        <td><%= review.user.email %></td>
+        <td><%= review.body %></td>
+        <td><%= link_to 'Show', review %></td>
+        <td><%= link_to 'Edit', edit_review_path(review) %></td>
+        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= render 'reviews/form' %>
+<br>
+
+<%= link_to 'Edit', edit_broker_path(@broker) %> |
+<%= link_to 'Back', brokers_path %>
+

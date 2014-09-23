@@ -1,0 +1,28 @@
+<h1>Listing showings</h1>
+
+
+
+
+<% @showings.each do |showing| %>
+
+
+
+
+<div class="items">
+
+        <h3><%= showing.date %></h3>
+
+        <%= showing.time %>
+        <%= showing.duration %>
+        <%= showing.location %>
+        <%= showing.details %>
+
+        <%= link_to 'Show', showing %>
+        <%= link_to 'Edit', edit_showing_path(showing) %>
+        <%= link_to 'Destroy', showing, method: :delete, data: { confirm: 'Are you sure?' } %>
+<br>
+</div>
+
+
+    <% end %>
+<%= link_to 'New Showing', new_showing_path %>

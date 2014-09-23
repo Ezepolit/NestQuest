@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  resources :apartment_showings
+
+  root 'home#index'
+  get 'home/index'
+
+
+  resources :reviews
+
+  devise_for :brokers
+  devise_for :users
+  resources :amenities
+
+  resources :brokers
+  resources :apartments
+  
+  resources :showings 
+  resources :showing_users
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

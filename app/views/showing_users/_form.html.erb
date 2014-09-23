@@ -1,0 +1,16 @@
+<%= form_for(@showing_user) do |f| %>
+  <% if @showing_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@showing_user.errors.count, "error") %> prohibited this showing_user from being saved:</h2>
+
+      <ul>
+      <% @showing_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :showing_id, value: @showing.id %>
+<%= f.submit 'Join Showing' %>
+<% end %>

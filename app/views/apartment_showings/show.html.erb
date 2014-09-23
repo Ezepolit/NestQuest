@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Apartment:</strong>
+  <%= @apartment_showing.apartment %>
+</p>
+
+<p>
+  <strong>Showing:</strong>
+  <%= @apartment_showing.showing %>
+</p>
+
+<%= link_to 'Edit', edit_apartment_showing_path(@apartment_showing) %> |
+<%= link_to 'Back', apartment_showings_path %>

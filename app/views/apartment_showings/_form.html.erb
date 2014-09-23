@@ -1,0 +1,25 @@
+<%= form_for(@apartment_showing) do |f| %>
+  <% if @apartment_showing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apartment_showing.errors.count, "error") %> prohibited this apartment_showing from being saved:</h2>
+
+      <ul>
+      <% @apartment_showing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%=f.label :apartment_id  %><br>
+    <%= f.collection_select(:apartment_id  , Apartment.all, :id, :title, {}, {multiple: true}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :showing_id %><br>
+    <%= f.collection_select(:showing_id, Showing.all, :id, :details) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Regroup</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<%= render 'nav'%>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+
+
+  <%= yield %>
+
+</body>
+<footer>
+  <div class="container">
+    
+    <div class="row">
+      Contact Us 
+      
+      Don't See a Tour that applies to you? Request a Customized Tour
+    </div>
+  </div>
+</footer>
+</html>

@@ -1,0 +1,154 @@
+<%= form_for @showing, :html => { :multipart => true } do |f| %>
+  <% if @showing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@showing.errors.count, "error") %> prohibited this showing from being saved:</h2>
+
+      <ul>
+      <% @showing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="field">
+    <%=f.label :broker %><br>
+    <%= f.collection_select(:broker_id , Broker.all, :id, :email) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.time_select :time %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :geocoverage%><br>
+    <%= f.text_field :geocoverage%>
+  </div>
+  <div class="field">
+    <%= f.label :details %><br>
+    <%= f.text_area :details %>
+  </div>
+  <%= f.file_field :image %>
+
+<!--   <div class="field_wrapper col-md-9"><input type="file" name="image[]" class="fileinput" id="fileupload" tabindex="18"><div id="uploadform0" style="display:visible">
+            <input onchange="jQuery('#uploadform1').show();" type="file" name="image[]" class="fileinput" id="fileupload0" tabindex="18">
+            </div><p class="description">Acceptable File Formats: jpg/.gif/.png/.flv/.mp4/.mp3</p></div>
+  <div class="area-input">
+      <ul class="area-sel-items">
+        <li id="area-text"><input type="text" id="area-txt-box" placeholder="Neighborhood  /  Address  /  Building  /  Keyword" autocomplete="off"></li>
+      </ul>
+    </div> -->
+    
+  <div id="beds" class="criteria-field beds">
+  <label for="beds">Bedrooms</label>
+  <select name="beds" id="beds">
+    <option value="">Any Beds</option>
+<option value="<1">Studio only</option>
+<option value="<=1">Studio / 1 br</option>
+<option value="1">1 bedroom</option>
+<option value="2">2 bedrooms</option>
+<option value="3">3 bedrooms</option>
+<option value="4">4 bedrooms</option>
+  </select>
+  <br>
+  <div class="shrink_wrapped" id="beds_op_container" style="display: none;">  
+    <input type="checkbox" name="beds_op" value=">=" se:behavior="field_hideable" se:hide_on_values=",<1, <=1" se:toggle_controller_selector="form#form select[name='beds']" se:element_to_toggle_selector="#beds_op_container" id="beds_or_more_checkbox">
+    <label class="secondary" for="beds_or_more_checkbox" style="font-weight: normal;">or more</label>
+  </div>
+  <div id="baths" class="criteria-field baths">
+  <label for="baths">Bathrooms</label>
+  <select name="baths" id="baths">
+    <option value="">Any Baths</option>
+<option value=">=1">1 or more</option>
+<option value=">=1.5">1.5 or more</option>
+<option value=">=2">2 or more</option>
+<option value=">=2.5">2.5 or more</option>
+<option value=">=3">3 or more</option>
+<option value=">=3.5">3.5 or more</option>
+<option value=">=4">4 or more</option>
+  </select>
+</div>
+<div id="price" class="criteria-field price rental">
+  <label for="price_from"> Price </label>
+  <div id="monthly_price" style="">
+    <div id="price_from_container" class="">
+      <select id="price_from" name="price_from" se:behavior="support_custom_value trigger_change_on_page_load">
+        <option value="">Any</option>
+<option value="Custom">» Custom</option>
+<option value="500">$500</option>
+<option value="750">$750</option>
+<option value="1000">$1,000</option>
+<option value="1250">$1,250</option>
+<option value="1500">$1,500</option>
+<option value="1750">$1,750</option>
+<option value="2000">$2,000</option>
+<option value="2500">$2,500</option>
+<option value="3000">$3,000</option>
+<option value="3500">$3,500</option>
+<option value="4000">$4,000</option>
+<option value="4500">$4,500</option>
+<option value="5000">$5,000</option>
+<option value="6000">$6,000</option>
+<option value="7000">$7,000</option>
+<option value="8000">$8,000</option>
+<option value="9000">$9,000</option>
+<option value="10000">$10,000</option>
+<option value="12500">$12,500</option>
+<option value="15000">$15,000</option>
+      </select>
+      <div id="price_from_custom_container" class="custom_container" style="display: none;">
+        <input type="text" id="price_from_ignore" name="price_from_ignore" value="$0" se:behavior="comma_separatable">
+      </div>
+    </div>
+
+    <div id="price_to_text">to</div>
+
+    <div id="price_to_container" class="">
+      <select id="price_to" name="price_to" se:behavior="support_custom_value trigger_change_on_page_load">
+        <option value="">Any</option>
+<option value="Custom">» Custom</option>
+<option value="500">$500</option>
+<option value="750">$750</option>
+<option value="1000">$1,000</option>
+<option value="1250">$1,250</option>
+<option value="1500">$1,500</option>
+<option value="1750">$1,750</option>
+<option value="2000">$2,000</option>
+<option value="2500">$2,500</option>
+<option value="3000">$3,000</option>
+<option value="3500">$3,500</option>
+<option value="4000">$4,000</option>
+<option value="4500">$4,500</option>
+<option value="5000">$5,000</option>
+<option value="6000">$6,000</option>
+<option value="7000">$7,000</option>
+<option value="8000">$8,000</option>
+<option value="9000">$9,000</option>
+<option value="10000">$10,000</option>
+<option value="12500">$12,500</option>
+<option value="15000">$15,000</option>
+      </select>
+      <div id="price_to_custom_container" class="custom_container" style="display: none;"> 
+        <input type="text" id="price_to_ignore" name="price_to_ignore" value="$0" se:behavior="comma_separatable">
+      </div>
+    </div> 
+  </div>
+</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+
+<% end %>

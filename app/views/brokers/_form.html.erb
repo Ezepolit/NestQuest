@@ -1,0 +1,48 @@
+<%= form_for @broker, :html => { :multipart => true } do |f| %>
+  <% if @broker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@broker.errors.count, "error") %> prohibited this broker from being saved:</h2>
+
+      <ul>
+      <% @broker.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br>
+    <%= f.number_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.number_field :phone %>
+  </div>
+
+  <%= f.file_field :avatar %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

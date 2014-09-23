@@ -1,0 +1,2 @@
+module ApartmentShowingsHelper
+end

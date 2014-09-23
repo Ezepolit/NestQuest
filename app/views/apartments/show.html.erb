@@ -1,0 +1,47 @@
+
+
+
+<p id="notice"><%= notice %></p>
+<%= image_tag @apartment.image.url(:thumb) %>
+<p>
+  <strong>Title:</strong>
+  <%= @apartment.title %>
+</p>
+
+<p>
+  <strong>Neighborhood:</strong>
+  <%= @apartment.neighborhood %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @apartment.price %>
+</p>
+
+<p>
+  <strong>Bedrooms:</strong>
+  <%= @apartment.bedrooms %>
+</p>
+
+<p>
+  <strong>Bathrooms:</strong>
+  <%= @apartment.bathrooms %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @apartment.description %>
+</p>
+
+<p>
+  <strong>Move date:</strong>
+  <%= @apartment.move_date %>
+</p>
+
+<p>
+  <strong>Broker Name:</strong>
+  <%= @apartment.broker.first_name %>
+</p>
+
+<%= link_to 'Edit', edit_apartment_path(@apartment) %> |
+<%= link_to 'Back', apartments_path %>

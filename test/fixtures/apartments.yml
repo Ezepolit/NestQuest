@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  neighborhood: MyString
+  price: 1
+  bedrooms: 1
+  bathrooms: 1
+  description: MyText
+  move_date: 2014-08-29
+
+two:
+  title: MyString
+  neighborhood: MyString
+  price: 1
+  bedrooms: 1
+  bathrooms: 1
+  description: MyText
+  move_date: 2014-08-29
