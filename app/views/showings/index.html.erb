@@ -1,26 +1,22 @@
 <h1>Listing showings</h1>
 
-
-
-
 <% @showings.each do |showing| %>
 
-
-
-
-<div class="items">
-
-        <h3><%= showing.date %></h3>
-
-        <%= showing.time %>
-        <%= showing.duration %>
-        <%= showing.location %>
-        <%= showing.details %>
-
-        <%= link_to 'Show', showing %>
-        <%= link_to 'Edit', edit_showing_path(showing) %>
-        <%= link_to 'Destroy', showing, method: :delete, data: { confirm: 'Are you sure?' } %>
-<br>
+<div class="media">
+  <a class="pull-left" href="#">
+    <h3 class="text-center"><%= showing.date.strftime('%B') %></h3>
+    <img class="media-object" src=<%= "http://placehold.it/150/c0392b/ffffff&text=" + showing.date.strftime('%d') %> alt="...">
+  </a>
+  <div class="media-body"> 
+    <h4 class="media-heading"><%= showing.details %></h4>
+     <h5><%= showing.date.strftime('%d') %></h5>
+    <%= showing.time %>
+    <%= showing.duration %>
+    <%= showing.location %>
+     <%= link_to 'Show', showing %>
+    <%= link_to 'Edit', edit_showing_path(showing) %>
+    <%= link_to 'Destroy', showing, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
 </div>
 
 

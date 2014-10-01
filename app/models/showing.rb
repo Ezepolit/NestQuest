@@ -2,7 +2,9 @@ class Showing < ActiveRecord::Base
 	has_many :apartment_showings, dependent: :destroy
 	has_many :apartments, through: :apartment_showings
 	belongs_to :broker
-	has_many :users, through: :showing_users
+	has_many :showing_users
+	has_many :users, through: :showing_users, dependent: :destroy
+	# after_create :create_apartment_showing
 
 	has_attached_file :image, :styles => { :medium => "500x500>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
  	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
@@ -11,8 +13,8 @@ class Showing < ActiveRecord::Base
  	def self.search(term)
 	 	if term
 	 		unless term == ""
-		 		results =[]
-		 		apartment_showings = []
+		 		results ||= []
+		 		apartment_showings ||= []
 		  		if term.to_i > 0
 		  			term = term.to_i
 		  		end
@@ -37,7 +39,11 @@ class Showing < ActiveRecord::Base
 	  	self.all
 	end
 
-
+	# def create_apartment_showing
+	# 		as = ApartmentShowing.new
+	# 		as.showing_id = self.id
+	# 		as.apartment_id = 
+	# end
 
 
 end

@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%= f.hidden_field :showing_id, value: @showing.id %>
+<%= f.text_field :showing_id, value: params['showing_user']['showing_id'] || '' %>
 <%= f.submit 'Join Showing' %>
+
 <% end %>

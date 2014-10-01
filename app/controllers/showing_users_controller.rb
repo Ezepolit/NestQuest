@@ -13,7 +13,7 @@ class ShowingUsersController < ApplicationController
   end
 
   # GET /showing_users/new
-  def n
+  def new
     @showing_user = ShowingUser.new
   end
 
@@ -25,6 +25,7 @@ class ShowingUsersController < ApplicationController
   # POST /showing_users.json
   def create
     @showing_user = ShowingUser.new(showing_user_params)
+    @showing_user.user = current_user
 
     respond_to do |format|
       if @showing_user.save

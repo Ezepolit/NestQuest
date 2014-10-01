@@ -1,4 +1,5 @@
 class ShowingsController < ApplicationController
+  before_action :authenticate_broker!, except: [:show, :index]
   before_action :set_showing, only: [:show, :edit, :update, :destroy]
 
   # GET /showings
@@ -32,11 +33,11 @@ class ShowingsController < ApplicationController
   # POST /showings.json
   def create
     @showing = Showing.new(showing_params)
-    # @showing.broker = current_broker
-    @apartmentShowing = Apartment_showing.new(showing_params)
+    @showing.broker = current_broker
+    # @apartmentShowing = Apartment_showing.new(showing_params)
 
     respond_to do |format|
-      if @showing.save && @apartmentShowing.save
+      if @showing.save
         format.html { redirect_to @showing, notice: 'Showing was successfully created.' }
         format.json { render :show, status: :created, location: @showing }
       else
@@ -49,6 +50,10 @@ class ShowingsController < ApplicationController
   # PATCH/PUT /showings/1
   # PATCH/PUT /showings/1.json
   def update
+
+    # @apartmentShowing = Apartment_showing.find(@showing)
+
+
     respond_to do |format|
       if @showing.update(showing_params)
         format.html { redirect_to @showing, notice: 'Showing was successfully updated.' }
@@ -79,6 +84,6 @@ class ShowingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def showing_params
-      params.require(:showing).permit(:date, :time, :duration, :location, :details, :image, :apartments=[])
+      params.require(:showing).permit(:date, :time, :duration, :location, :details, :image, :geocoverage, apartment_ids: [])
     end
 end

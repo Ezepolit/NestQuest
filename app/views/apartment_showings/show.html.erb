@@ -2,12 +2,12 @@
 
 <p>
   <strong>Apartment:</strong>
-  <%= @apartment_showing.apartment %>
+  <%= @apartment_showing.apartment.title %>
 </p>
 
 <p>
   <strong>Showing:</strong>
-  <%= @apartment_showing.showing %>
+  <%= @apartment_showing.showing.location %>
 </p>
 
 <%= link_to 'Edit', edit_apartment_showing_path(@apartment_showing) %> |

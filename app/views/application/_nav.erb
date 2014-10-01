@@ -12,29 +12,33 @@
       <%= link_to 'Nest Quest', root_path, class:'navbar-brand' %>
 
     </div>
+          <%= form_tag showings_path, class:'navbar-form navbar-left', method: "get" do %>
 
       <div class="form-group">
-          <%= form_tag showings_path, class:'navbar-form navbar-left', method: "get" do %>
-        <p>
           <%= text_field_tag :search, params[:search.downcase], class:'form-control', placeholder:'Enter a price, number of bedrooms, or neighborhood.' %>
-          <%= submit_tag "Search Tours", name: nil%>
-        </p>
-        <%end%>
+          <%= submit_tag "Search Tours", class:"btn btn-default"%>
         </div>
+      <%end%>
+
+
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+  
+          
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Actions <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
 
             <% if current_broker %>
             <li><%= link_to 'Create new tour', new_showing_path %></li>
             <li><%= link_to 'Create new apartment listing', new_apartment_path %></li>
             <li><%= link_to 'Edit Broker Profile', edit_broker_registration_path %></li>
+            <% end %>
+
+            <% if current_user %>
+            <li><%= link_to 'Submit Tour Request', new_showing_user_path%></li>
+            <li><%= link_to 'Edit User Profile', edit_user_registration_path %></li>
             <% end %>
 
             <li><a href="#">Another action</a></li>
@@ -46,7 +50,6 @@
           </ul>
         </li>
       </ul>
-      
 
       <ul class="nav navbar-nav navbar-right">
        
@@ -60,16 +63,7 @@
         	</li>
 
 
-        	<li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	          </ul>
-	        </li>
+        
 
             <% elsif broker_signed_in? %>
 

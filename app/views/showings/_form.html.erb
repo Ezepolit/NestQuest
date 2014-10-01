@@ -10,10 +10,6 @@
       </ul>
     </div>
   <% end %>
- <div class="field">
-    <%=f.label :broker %><br>
-    <%= f.collection_select(:broker_id , Broker.all, :id, :email) %>
-  </div>
   
   <div class="field">
     <%= f.label :date %><br>
@@ -145,6 +141,10 @@
     </div> 
   </div>
 </div>
+
+
+    <%= f.collection_select(:apartment_ids, current_broker.apartments.all, :id, :title, {}, {multiple: true}) %>
+
 
   <div class="actions">
     <%= f.submit %>
