@@ -54,7 +54,7 @@
 
 <% end %>   
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div id="carousel-example-generic" class="carousel slide">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -62,21 +62,26 @@
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
 
-  
+    <!-- Wrapper for slides -->
+  <div class="carousel-inner">
 <% @showing.apartments.each do |apartment| %>
   
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-     <%= image_tag apartment.image.url(:medium) %>
+
+    <% if apartment == @showing.apartments.first %>
+      <div class="item active">
+    <% else %>
+      <div class="item">
+    <% end %>
+     <%= image_tag apartment.image.url(:large) %>
       <div class="carousel-caption">
         <%= apartment.title %>
       </div>
     </div>
     
+
+<% end %> 
   </div>
 
-<% end %>   
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
