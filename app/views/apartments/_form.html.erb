@@ -45,6 +45,14 @@
     <%= f.collection_select(:broker_id, Broker.all, :id, :first_name) %>
   </div>
   <%= f.file_field :image %>
+  <div id="apartment_photos">
+    <%= f.fields_for :apartment_photos do |apartment_photo| %>
+      <%= render 'apartment_photo_fields', f:apartment_photo %>
+    <% end %>
+  </div>
+  <div class="links">
+    <%= link_to_add_association 'add photo', f, :apartment_photos %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

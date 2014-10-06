@@ -1,24 +1,29 @@
 <h1>Listing showings</h1>
 
 <% @showings.each do |showing| %>
+  <%= link_to showing do%>
+    <div class="media">
+      <span class="pull-left" href="#">
+        <h3 class="text-center"><%= showing.date.strftime('%B') %></h3>
+        <img class="media-object" src=<%= "http://placehold.it/150/c0392b/ffffff&text=" + showing.date.strftime('%d') %> alt="...">
+      </span>
+      <div class="media-body"> 
+        <h4 class="media-heading"><%= showing.details %></h4>
+        <p><%= showing.broker.email %></p>
+        <p><%= showing.time.strftime('%I:%M %p') %></p>
+        <p><%= showing.duration %></p>
+        <p><%= showing.location %></p>
+        <p><%= showing.details %></p>
+        <% showing.apartments.each do |apartment| %>
+          <%= image_tag apartment.image.url(:thumb) %>
+        <% end %>   
 
-<div class="media">
-  <a class="pull-left" href="#">
-    <h3 class="text-center"><%= showing.date.strftime('%B') %></h3>
-    <img class="media-object" src=<%= "http://placehold.it/150/c0392b/ffffff&text=" + showing.date.strftime('%d') %> alt="...">
-  </a>
-  <div class="media-body"> 
-    <h4 class="media-heading"><%= showing.details %></h4>
-     <h5><%= showing.date.strftime('%d') %></h5>
-    <%= showing.time %>
-    <%= showing.duration %>
-    <%= showing.location %>
-     <%= link_to 'Show', showing %>
-    <%= link_to 'Edit', edit_showing_path(showing) %>
-    <%= link_to 'Destroy', showing, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div>
-</div>
+        
+      </div>
+    <% end %>   
 
 
-    <% end %>
+
+
+  <% end %>
 <%= link_to 'New Showing', new_showing_path %>

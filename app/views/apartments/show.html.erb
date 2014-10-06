@@ -3,6 +3,9 @@
 
 <p id="notice"><%= notice %></p>
 <%= image_tag @apartment.image.url(:thumb) %>
+  <% @apartment.apartment_photos.each do |photo| %>
+    <%= image_tag photo.photos.url(:thumb) %>
+  <% end %>
 <p>
   <strong>Title:</strong>
   <%= @apartment.title %>

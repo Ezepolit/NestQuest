@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923192500) do
+ActiveRecord::Schema.define(version: 20141006190720) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(version: 20140923192500) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "apartment_photos", force: true do |t|
+    t.integer  "apartment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photos_file_name"
+    t.string   "photos_content_type"
+    t.integer  "photos_file_size"
+    t.datetime "photos_updated_at"
+  end
+
+  add_index "apartment_photos", ["apartment_id"], name: "index_apartment_photos_on_apartment_id"
 
   create_table "apartment_showings", force: true do |t|
     t.integer  "apartment_id"

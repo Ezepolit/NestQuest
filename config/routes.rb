@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :apartment_photos
+
   resources :apartment_showings
 
   root 'home#index'

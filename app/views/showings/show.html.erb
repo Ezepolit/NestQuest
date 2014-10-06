@@ -65,20 +65,23 @@
     <!-- Wrapper for slides -->
   <div class="carousel-inner">
 <% @showing.apartments.each do |apartment| %>
-  
+    <% apartment.apartment_photos.each do |photo| %>
 
-    <% if apartment == @showing.apartments.first %>
-      <div class="item active">
-    <% else %>
-      <div class="item">
-    <% end %>
-     <%= image_tag apartment.image.url(:large) %>
+      <% if apartment == @showing.apartments.first && photo == @showing.apartments.first.apartment_photos.first %>
+        <div class="item active">
+      <% else %>
+        <div class="item">
+      <% end %>
+
+      <%= image_tag photo.photos.url(:large) %>
       <div class="carousel-caption">
         <%= apartment.title %>
       </div>
     </div>
+  
     
-
+    
+    <% end %>
 <% end %> 
   </div>
 
