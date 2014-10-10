@@ -84,6 +84,6 @@ class ShowingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def showing_params
-      params.require(:showing).permit(:date, :time, :duration, :location, :details, :image, :geocoverage, apartment_ids: [])
+      params.require(:showing).permit(:date, :time, :duration, :location, :details, :image, :geocoverage, :neighborhoods, :bedroom, :lower_price_range, :upper_price_range, apartment_ids: [])
     end
 end

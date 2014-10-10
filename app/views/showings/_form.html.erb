@@ -35,6 +35,11 @@
     <%= f.label :details %><br>
     <%= f.text_area :details %>
   </div>
+  <div class="field">
+    <%= f.label :Found_Nest_Bonus %><br>
+    <%= f.text_area :Found_Nest_Bonus %>
+  </div>
+
   <%= f.file_field :image %>
 
 <!--   <div class="field_wrapper col-md-9"><input type="file" name="image[]" class="fileinput" id="fileupload" tabindex="18"><div id="uploadform0" style="display:visible">
@@ -45,19 +50,9 @@
         <li id="area-text"><input type="text" id="area-txt-box" placeholder="Neighborhood  /  Address  /  Building  /  Keyword" autocomplete="off"></li>
       </ul>
     </div> -->
-    
-  <div id="beds" class="criteria-field beds">
-  <label for="beds">Bedrooms</label>
-  <select name="beds" id="beds">
-    <option value="">Any Beds</option>
-<option value="<1">Studio only</option>
-<option value="<=1">Studio / 1 br</option>
-<option value="1">1 bedroom</option>
-<option value="2">2 bedrooms</option>
-<option value="3">3 bedrooms</option>
-<option value="4">4 bedrooms</option>
-  </select>
-  <br>
+    <%= f.label :bedroom %><br>
+    <%= f.select :bedroom, options_for_select(["Any Beds", "Studio only", "Studio / 1 br","1 bedroom","2 bedrooms","3 bedrooms","4 bedrooms"]) %>
+
   <div class="shrink_wrapped" id="beds_op_container" style="display: none;">  
     <input type="checkbox" name="beds_op" value=">=" se:behavior="field_hideable" se:hide_on_values=",<1, <=1" se:toggle_controller_selector="form#form select[name='beds']" se:element_to_toggle_selector="#beds_op_container" id="beds_or_more_checkbox">
     <label class="secondary" for="beds_or_more_checkbox" style="font-weight: normal;">or more</label>
@@ -79,6 +74,7 @@
   <label for="price_from"> Price </label>
   <div id="monthly_price" style="">
     <div id="price_from_container" class="">
+<%= f.select :lower_price_range, options_for_select(["$500","$750","$1,000","$1,250","$1,500","$1,750","$2,000","$2,500","$3,000","3,500","4,000","$4,500","$5,000","$6,000","$7,000","$8,000","$9,000","$10,000"])%>
       <select id="price_from" name="price_from" se:behavior="support_custom_value trigger_change_on_page_load">
         <option value="">Any</option>
 <option value="Custom">» Custom</option>
@@ -100,8 +96,7 @@
 <option value="8000">$8,000</option>
 <option value="9000">$9,000</option>
 <option value="10000">$10,000</option>
-<option value="12500">$12,500</option>
-<option value="15000">$15,000</option>
+
       </select>
       <div id="price_from_custom_container" class="custom_container" style="display: none;">
         <input type="text" id="price_from_ignore" name="price_from_ignore" value="$0" se:behavior="comma_separatable">
@@ -111,6 +106,7 @@
     <div id="price_to_text">to</div>
 
     <div id="price_to_container" class="">
+      <%= f.select :upper_price_range, options_for_select(["$500","$750","$1,000","$1,250","$1,500","$1,750","$2,000","$2,500","$3,000","3,500","4,000","$4,500","$5,000","$6,000","$7,000","$8,000","$9,000","$10,000"])%>
       <select id="price_to" name="price_to" se:behavior="support_custom_value trigger_change_on_page_load">
         <option value="">Any</option>
 <option value="Custom">» Custom</option>
@@ -132,8 +128,6 @@
 <option value="8000">$8,000</option>
 <option value="9000">$9,000</option>
 <option value="10000">$10,000</option>
-<option value="12500">$12,500</option>
-<option value="15000">$15,000</option>
       </select>
       <div id="price_to_custom_container" class="custom_container" style="display: none;"> 
         <input type="text" id="price_to_ignore" name="price_to_ignore" value="$0" se:behavior="comma_separatable">

@@ -51,4 +51,7 @@ gem 'binding_of_caller'
 # bootsrap SaSS
 gem 'bootstrap-sass', '~> 3.2.0'
 
+#google maps for rails
+gem 'gmaps4rails'
+
 

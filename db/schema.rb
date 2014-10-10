@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006190720) do
+ActiveRecord::Schema.define(version: 20141010181334) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
@@ -125,6 +125,10 @@ ActiveRecord::Schema.define(version: 20141006190720) do
     t.integer  "apartment_id"
     t.integer  "broker_id"
     t.string   "geocoverage"
+    t.string   "Found_Nest_Bonus"
+    t.string   "bedroom"
+    t.string   "lower_price_range"
+    t.string   "upper_price_range"
   end
 
   add_index "showings", ["apartment_id"], name: "index_showings_on_apartment_id"
@@ -143,6 +147,7 @@ ActiveRecord::Schema.define(version: 20141006190720) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "full_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

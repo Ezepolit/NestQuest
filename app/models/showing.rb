@@ -39,6 +39,14 @@ class Showing < ActiveRecord::Base
 	  	self.all
 	end
 
+	def neighborhoods
+		neighborhood = []
+		apartments.each do |apartment|
+    neighborhood << apartment.neighborhood
+		end
+		return neighborhood
+	end
+
 	# def create_apartment_showing
 	# 		as = ApartmentShowing.new
 	# 		as.showing_id = self.id

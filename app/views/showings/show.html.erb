@@ -1,6 +1,8 @@
+<!--  <div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div> 
+<div id="map-canvas"></div> -->
 <p id="notice"><%= notice %></p>
-
-
 <%= link_to("addUser", showing_users_path(:showing_user=>{:showing_id=> @showing}), method: :post) %>
 
 <% @showing.users.each do |user| %>
@@ -15,10 +17,17 @@
   <strong>Date:</strong>
   <%= @showing.date %>
 </p>
-  <%= debug(@showing)%>
 <p>
   <strong>Time:</strong>
   <%= @showing.time %>
+</p>
+<p>
+  <strong>Nieghborhoods:</strong>
+  <%= @showing.neighborhoods %>
+</p>
+<p>
+  <strong>Duration:</strong>
+  <%= @showing.duration %>
 </p>
 
 <p>
@@ -53,49 +62,47 @@
        
 
 <% end %>   
-
-<div id="carousel-example-generic" class="carousel slide">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
-    <!-- Wrapper for slides -->
-  <div class="carousel-inner">
 <% @showing.apartments.each do |apartment| %>
-    <% apartment.apartment_photos.each do |photo| %>
+  <% unless apartment.apartment_photos.empty? %>
+  <div id="carousel-example-generic_<%= apartment.id %>" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic_<%= apartment.id %>" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic_<%= apartment.id %>" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic_<%= apartment.id %>" data-slide-to="2"></li>
+    </ol>
 
-      <% if apartment == @showing.apartments.first && photo == @showing.apartments.first.apartment_photos.first %>
-        <div class="item active">
-      <% else %>
-        <div class="item">
-      <% end %>
+      <!-- Wrapper for slides -->
+    <div class="carousel-inner">
 
-      <%= image_tag photo.photos.url(:large) %>
-      <div class="carousel-caption">
-        <%= apartment.title %>
+      <% apartment.apartment_photos.each do |photo| %>
+
+        <% if photo == apartment.apartment_photos.first %>
+          <div class="item active">
+        <% else %>
+          <div class="item">
+        <% end %>
+
+        <%= image_tag photo.photos.url(:large) %>
+        <div class="carousel-caption">
+          <%= apartment.title %>
+        </div>
       </div>
+      <% end %>
     </div>
-  
-    
-    
-    <% end %>
-<% end %> 
-  </div>
+  <br>
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+  <a class="left carousel-control" href="#carousel-example-generic_<%= apartment.id %>" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+  <a class="right carousel-control" href="#carousel-example-generic_<%= apartment.id %>" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div>
-
+<% end %>
 <br>
-
+<% end %> 
 
 
 

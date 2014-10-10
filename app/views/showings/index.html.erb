@@ -1,14 +1,26 @@
-<h1>Listing showings</h1>
+<h1>Upcoming Tours</h1>
 
 <% @showings.each do |showing| %>
-  <%= link_to showing do%>
-    <div class="media">
-      <span class="pull-left" href="#">
+    <div class="media" style="border: 1px solid rgba(128, 128, 128, 0.35)">
+      <%= link_to showing, class:"pull-left" do%>
         <h3 class="text-center"><%= showing.date.strftime('%B') %></h3>
-        <img class="media-object" src=<%= "http://placehold.it/150/c0392b/ffffff&text=" + showing.date.strftime('%d') %> alt="...">
-      </span>
+        <img src=<%= "http://placehold.it/150/c0392b/ffffff&text=" + showing.date.strftime('%d') %> alt="..." >
+      <% end %>   
       <div class="media-body"> 
         <h4 class="media-heading"><%= showing.details %></h4>
+        <div class="group">
+          <div class="one">
+          <%= showing.bedroom %>
+          </div>
+          <div class="two">
+            From <%= showing.lower_price_range%>
+            to <%= showing.upper_price_range%>
+          </div>
+          <div class="three">
+           <%= showing.neighborhoods.to_sentence %>
+          </div>
+        </div>
+
         <p><%= showing.broker.email %></p>
         <p><%= showing.time.strftime('%I:%M %p') %></p>
         <p><%= showing.duration %></p>
@@ -16,14 +28,12 @@
         <p><%= showing.details %></p>
         <% showing.apartments.each do |apartment| %>
           <%= image_tag apartment.image.url(:thumb) %>
+
+          <% apartment.apartment_photos.first do |photo| %>
+            <%= link_to image_tag photo.photos.url(:thumb) %>
+          <% end %>
         <% end %>   
-
-        
       </div>
-    <% end %>   
-
-
-
-
-  <% end %>
+    </div>  
+<% end %>
 <%= link_to 'New Showing', new_showing_path %>
