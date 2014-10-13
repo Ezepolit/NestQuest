@@ -55,3 +55,8 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'gmaps4rails'
 
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+
+end

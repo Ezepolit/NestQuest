@@ -4,7 +4,7 @@ class ShowingUsersController < ApplicationController
   # GET /showing_users
   # GET /showing_users.json
   def index
-    @showing_users = ShowingUser.all
+    @showing_users = ShowingUser.where(showing_id: params[:tour])
   end
 
   # GET /showing_users/1

@@ -3,8 +3,11 @@
 </div> 
 <div id="map-canvas"></div> -->
 <p id="notice"><%= notice %></p>
-<%= link_to("addUser", showing_users_path(:showing_user=>{:showing_id=> @showing}), method: :post) %>
-
+<% if current_user %>
+  <%= link_to("addUser", showing_users_path(:showing_user=>{:showing_id=> @showing}), method: :post) %>
+<% elsif current_broker %>
+  <%= link_to "View Signed Up Users", showing_users_path(tour: @showing.id) %>
+<% end %>
 <% @showing.users.each do |user| %>
 
 <p> <%= user.email   %>   
