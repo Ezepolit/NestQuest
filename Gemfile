@@ -42,9 +42,6 @@ gem 'paperclip' , '~> 4.2'
 # devise for users gem
 gem 'devise'
 
-#debugging
-gem 'better_errors'
-gem 'binding_of_caller'
 
 # bootsrap SaSS
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -55,6 +52,10 @@ gem 'gmaps4rails'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  #debugging
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
 end
 
 group :production do

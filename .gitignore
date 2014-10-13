@@ -17,5 +17,5 @@
 
 
 # Ignore Images
-# /app/assets/images
+# git/app/assets/images
 /public/system

@@ -14,6 +14,11 @@
 </p>
 <% end %>   
 
+<h1>
+  <%= @showing.neighborhoods.to_sentence %>
+</h1>
+
+
 
 <%= image_tag @showing.image.url(:thumb) %>
 <p>
@@ -23,10 +28,6 @@
 <p>
   <strong>Time:</strong>
   <%= @showing.time %>
-</p>
-<p>
-  <strong>Nieghborhoods:</strong>
-  <%= @showing.neighborhoods %>
 </p>
 <p>
   <strong>Duration:</strong>
@@ -48,20 +49,86 @@
   <%= @showing.details %>
 </p>
 
+<% @showing.apartments.each do |apartment| %>
+    <%= image_tag apartment.image.url(:thumb) %>
+
+    <% apartment.apartment_photos.first do |photo| %>
+      <%= link_to image_tag photo.photos.url(:thumb) %>
+    <% end %>
+  <% end %>   
+
+<div class="row">
+  <% @showing.apartments.each do |apartment| %>
+    <% unless apartment.apartment_photos.empty? %>
+      <div id="carousel-example-generic_<%= apartment.id %>" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic_<%= apartment.id %>" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic_<%= apartment.id %>" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic_<%= apartment.id %>" data-slide-to="2"></li>
+        </ol>
+
+          <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+
+
+          <% apartment.apartment_photos.first do |photo| %>
+
+            <% if photo == apartment.apartment_photos.first %>
+              <div class="item active">
+            <% else %>
+              <div class="item">
+            <% end %>
+
+            <%= image_tag photo.photos.url(:large) %>
+            <div class="carousel-caption">
+              <%= apartment.title %>
+            </div>
+          </div>
+
+          <% end %>
+          </div>
+           <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic_<%= apartment.id %>" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic_<%= apartment.id %>" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a> 
+                </div>
+      </div>
+        <% end %>            
+  <% end %>            
+</div>
+
+
+
+
+
+
 
 <h1>Listing apartments</h1>
 <% @showing.apartments.each do |apartment| %>
 <div class="well">
-  <p> <%= image_tag apartment.image %></p>
-  <p> Apartment Name: <%= apartment.title %></p>
-  <p> <%= apartment.neighborhood %></p>
-  <p> <%= apartment.price %></p>
-  <p>Bedrooms: <%= apartment.bedrooms %></p>
-  <p>Bathrooms: <%= apartment.bathrooms %></p>
-  <p> <%= apartment.description %></p>
-  <p> <%= apartment.move_date %></p>
+  <div class="row">
+    <div class="col-md-4">
+      <p> <%= image_tag apartment.image.url(:medium) %></p>
+    </div>
+    <div class="col-md-8">
+      <h4> <%= apartment.title %></h4>
+      <p> <%= apartment.neighborhood %></p>
+      <p> <%= apartment.price %></p>
+      <p>Bedrooms: <%= apartment.bedrooms %></p>
+      <p>Bathrooms: <%= apartment.bathrooms %></p>
+      <p> <%= apartment.description %></p>
+      <p> <%= apartment.move_date %></p>
+    </div>
 
-  <% unless apartment.apartment_photos.empty? %>
+
+  </div>
+
+  <div class="row">
+    <% unless apartment.apartment_photos.empty? %>
     <div id="carousel-example-generic_<%= apartment.id %>" class="carousel slide">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -88,16 +155,16 @@
         </div>
 
         <% end %>
+        </div>
+         <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic_<%= apartment.id %>" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic_<%= apartment.id %>" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>  
       </div>
-    <br>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic_<%= apartment.id %>" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic_<%= apartment.id %>" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-    </a>
+   
   </div>
   <% end %>
   <br>
