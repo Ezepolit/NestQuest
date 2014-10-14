@@ -40,10 +40,7 @@
     <%= f.label :move_date %><br>
     <%= f.date_select :move_date %>
   </div>
-  <div class="field">
-    <%=f.label :broker_id %><br>
-    <%= f.collection_select(:broker_id, Broker.all, :id, :first_name) %>
-  </div>
+  <%= f.hidden_field :broker_id, value: current_broker.id %>
   <%= f.file_field :image %>
   <div id="apartment_photos">
     <%= f.fields_for :apartment_photos do |apartment_photo| %>

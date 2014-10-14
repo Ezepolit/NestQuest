@@ -20,6 +20,11 @@
            <%= showing.neighborhoods.to_sentence %>
           </div>
         </div>
+        <div class="alert alert-warning">
+        Found Nest Bonus: <%=showing.Found_Nest_Bonus %>
+</div>
+
+<%= image_tag showing.broker.avatar.url %>
 
         <p><%= showing.broker.email %></p>
         <p><%= showing.time.strftime('%I:%M %p') %></p>
