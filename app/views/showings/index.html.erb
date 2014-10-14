@@ -1,14 +1,20 @@
 <h1>Upcoming Tours</h1>
 
 <% @showings.each do |showing| %>
-    <div class="media" style="border: 1px solid rgba(128, 128, 128, 0.35)">
-      <%= link_to showing, class:"pull-left" do%>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= showing.neighborhoods.to_sentence.titlecase %></h3>
+      </div>
+      <div class="panel-body">
+       <div class="col-md-2">
+          <%= link_to showing, class:"pull-left" do%>
         <h3 class="text-center"><%= showing.date.strftime('%B') %></h3>
         <img src=<%= "http://placehold.it/150/c0392b/ffffff&text=" + showing.date.strftime('%d') %> alt="..." >
-      <% end %>   
-      <div class="media-body"> 
-        <h4 class="media-heading"><%= showing.details %></h4>
-        <div class="group">
+      <% end %> 
+       </div>  
+
+       <div class="col-md-8">
+         <div class="group">
           <div class="one">
           <%= showing.bedroom %>
           </div>
@@ -21,10 +27,10 @@
           </div>
         </div>
         <div class="alert alert-warning">
-        Found Nest Bonus: <%=showing.Found_Nest_Bonus %>
-</div>
+          Found Nest Bonus: <%=showing.Found_Nest_Bonus %>
+        </div>
 
-<%= image_tag showing.broker.avatar.url %>
+      <%= image_tag showing.broker.avatar.url, class:'img-circle', height:'90px'  %>
 
         <p><%= showing.broker.email %></p>
         <p><%= showing.time.strftime('%I:%M %p') %></p>
@@ -35,10 +41,14 @@
           <%= image_tag apartment.image.url(:thumb) %>
 
           <% apartment.apartment_photos.first do |photo| %>
-            <%= link_to image_tag photo.photos.url(:thumb) %>
+            <%= link_to image_tag photo.photos.url(:thumb)%>
           <% end %>
         <% end %>   
+
       </div>
+       </div>
     </div>  
 <% end %>
+
+
 <%= link_to 'New Showing', new_showing_path %>
