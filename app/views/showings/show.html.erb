@@ -29,7 +29,9 @@
 </p>
 <p>
   <strong>Time:</strong>
-  <%= @showing.time %>
+  <p><%= @showing.time.strftime('%I:%M %p') %></p>
+  <%= image_tag @showing.broker.avatar.url, class:'img-circle', height:'90px'  %>
+
 </p>
 <p>
   <strong>Duration:</strong>

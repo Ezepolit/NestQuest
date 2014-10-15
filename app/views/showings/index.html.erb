@@ -1,53 +1,51 @@
 <h1>Upcoming Tours</h1>
 
 <% @showings.each do |showing| %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= showing.neighborhoods.to_sentence.titlecase %></h3>
-      </div>
-      <div class="panel-body">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= showing.neighborhoods.to_sentence.titlecase %></h3>
+    </div>
+    <div class="panel-body">
        <div class="col-md-2">
-          <%= link_to showing, class:"pull-left" do%>
+        <%= link_to showing, class:"pull-left" do%>
         <h3 class="text-center"><%= showing.date.strftime('%B') %></h3>
         <img src=<%= "http://placehold.it/150/c0392b/ffffff&text=" + showing.date.strftime('%d') %> alt="..." >
-      <% end %> 
-       </div>  
+        <% end %> 
+      </div>  
 
-       <div class="col-md-8">
-         <div class="group">
-          <div class="one">
+    <div class="col-md-6">
+      <div class="row">
+       <div class="group">
+        <div class="one">
           <%= showing.bedroom %>
-          </div>
-          <div class="two">
-            From <%= showing.lower_price_range%>
-            to <%= showing.upper_price_range%>
-          </div>
-          <div class="three">
-           <%= showing.neighborhoods.to_sentence %>
-          </div>
         </div>
-        <div class="alert alert-warning">
-          Found Nest Bonus: <%=showing.Found_Nest_Bonus %>
+        <div class="two">
+          From <%= showing.lower_price_range%>
+          to <%= showing.upper_price_range%>
         </div>
+        <div class="three">
+         <%= pluralize( showing.apartments.count, 'apartment' ) %>
 
-      <%= image_tag showing.broker.avatar.url, class:'img-circle', height:'90px'  %>
-
-        <p><%= showing.broker.email %></p>
-        <p><%= showing.time.strftime('%I:%M %p') %></p>
+       </div>
+     </div>
+     <div class="row">
         <p><%= showing.duration %></p>
         <p><%= showing.location %></p>
         <p><%= showing.details %></p>
         <% showing.apartments.each do |apartment| %>
-          <%= image_tag apartment.image.url(:thumb) %>
-
-          <% apartment.apartment_photos.first do |photo| %>
-            <%= link_to image_tag photo.photos.url(:thumb)%>
-          <% end %>
+        <%= image_tag apartment.image.url(:thumb) %>
+        <% apartment.apartment_photos.first do |photo| %>
+        <%= link_to image_tag photo.photos.url(:thumb)%>
+        <% end %>
         <% end %>   
-
       </div>
-       </div>
-    </div>  
+    </div>
+      </div>
+      <div class="col-md-2">
+        <img src= "https://maps.googleapis.com/maps/api/staticmap?size=250x150&path=fillcolor:0xAA000033%7Ccolor:0xFFFFFF00%7Cenc:}zswFtikbMjJzZ%7CRdPfZ}DxWvBjWpF~IvJnEvBrMvIvUpGtQpFhOQdKpz@bIx{A%7CPfYlvApz@bl@tcAdTpGpVwQtX}i@%7CGen@lCeAda@bjA%60q@v}@rfAbjA%7CEwBpbAd_@he@hDbu@uIzWcWtZoTdImTdIwu@tDaOXw_@fc@st@~VgQ%7C[uPzNtA%60LlEvHiYyLs^nPhCpG}SzCNwHpz@cEvXg@bWdG%60]lL~MdTmEnCwJ[iJhOae@nCm[%60Aq]qE_pAaNiyBuDurAuB}}Ay%60@%7CEKv_@?%7C[qGji@lAhYyH%60@Xiw@tBerAs@q]jHohAYkSmW?aNoaAbR}LnPqNtMtIbRyRuDef@eT_z@mW_Nm%7CB~j@zC~hAyUyJ_U{Z??cPvg@}s@sHsc@_z@cj@kp@YePoNyYyb@_iAyb@gBw^bOokArcA}GwJuzBre@i\tf@sZnd@oElb@hStW{]vv@??kz@~vAcj@zKa%60Atf@uQj_Aee@pU_UrcA"/>
+      </div>
+    </div>
+  </div>  
 <% end %>
 
 

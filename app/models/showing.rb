@@ -6,7 +6,7 @@ class Showing < ActiveRecord::Base
 	has_many :users, through: :showing_users, dependent: :destroy
 	# after_create :create_apartment_showing
 
-	has_attached_file :image, :styles => { :medium => "500x500>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+	has_attached_file :image, :styles => { :medium => "500x500>", small: "200x150" ,:thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
  	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
 
