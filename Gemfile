@@ -49,6 +49,9 @@ gem 'bootstrap-sass', '~> 3.2.0'
 #google maps for rails
 gem 'gmaps4rails'
 
+#amazon web services gem
+gem 'aws-sdk'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
