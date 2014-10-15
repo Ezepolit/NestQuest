@@ -1,5 +1,5 @@
 <div class="nested-fields">
   <%= f.hidden_field :apartment_id, value: @apartment.id %>
   <%= f.file_field :photos %>
-  <%= link_to_remove_association "remove photo", f %>
+  <%= link_to_remove_association "Remove Photo", f, class:'btn-xs btn-danger' %>
 </div>

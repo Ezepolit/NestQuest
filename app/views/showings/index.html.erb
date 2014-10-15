@@ -28,10 +28,11 @@
 
        </div>
      </div>
+         <div class="alert alert-warning" style="max-width:350px;">
+        Found Nest Bonus: <%= showing.Found_Nest_Bonus %>
+</div>
      <div class="row">
-        <p><%= showing.duration %></p>
-        <p><%= showing.location %></p>
-        <p><%= showing.details %></p>
+        <p>Details: <%= showing.details %></p>
         <% showing.apartments.each do |apartment| %>
         <%= image_tag apartment.image.url(:thumb) %>
         <% apartment.apartment_photos.first do |photo| %>
