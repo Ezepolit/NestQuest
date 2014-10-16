@@ -4,12 +4,81 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.jumbotron {
-	background-size: cover;
-	background: url(<%=image_url("couch.jpg")%>) no-repeat;
+body{
+  margin-bottom: 0;
+  height: 100vh;
+  background-size: contain;
+  background: url(<%=image_url("nestquest.jpg")%>) no-repeat fixed;
 }
+
+.home > nav{
+  background: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: none;
+  .navbar-brand{
+    font-size: 30px;
+  }
+  .navbar-form{
+    display: none;
+  }
+}
+
+
+.jumbotron {
+  background: none;
+}
+
+.cta{
+  @extend .col-md-6;
+  @extend .col-lg-6;
+  @extend .col-md-push-3;
+  padding-top: 6rem;
+  font-size: 40px;
+  text-align: center;
+  font-weight: 100;
+ 
+}
+.cta-search{
+  background: rgba(255, 255, 255, 0.5);
+  + span {
+    > .btn-default {
+      background: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+.btn-cta{
+  @extend .btn-default;
+  font-size: 20px;
+  color: white;
+  background: none;
+  &:hover, &:focus {
+      background: none;
+
+    text-decoration: underline;
+    color: white;
+
+  }
+
+}
+
+
 footer {
-	background-color: grey;
+  position: absolute;
+  bottom: 0;
+  right: 12rem;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 100px;
+  color: #777;
+	background: transparent;
+  a {
+    color: white;
+    text-decoration: underline;
+    font-weight: 100;
+
+  }
 }
 
 .index-thumbnail {
@@ -23,7 +92,9 @@ footer {
 
 
 .group{
+  display: inline-block;
   padding: 10px;
+  padding-left: 13px;
   div{
     padding: 10px;
     border: 2px solid gray;
@@ -40,4 +111,11 @@ footer {
 
 .form-control.searchbar{
   width: 21em;
+}
+
+.middle{
+  margin-bottom: 15px;
+  h3 {
+    margin-top: 0;
+  }
 }

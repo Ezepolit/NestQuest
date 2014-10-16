@@ -6,6 +6,9 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <script>
@@ -23,15 +26,20 @@
 </style>
 
 <%= render 'nav'%>
-<p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+<% if notice || alert %>
+  <p class="notice"><%= raise 'hell' %></p>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
 
 
 <div class="container">
   <%= yield %>
 </div>
 
-</body>
+
+
+
 <footer>
   <div class="container">
     
@@ -39,9 +47,10 @@
       <p>Contact Us</p> 
       <p><font color=blue>info@nestquest.me</font></p>
        
-      
-      Don't See a Tour that applies to you? Request a Customized Tour by emailing us what you are looking for and we will reach out to agents to get a tour organized for you.
+
     </div>
   </div>
 </footer>
+</body>
+
 </html>

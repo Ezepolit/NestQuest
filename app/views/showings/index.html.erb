@@ -1,53 +1,65 @@
-<h1>Upcoming Tours</h1>
+<div class="row">
+  <div class="col-md-6 col-md-push-3    ">
+    
+    <% @showings.each do |showing| %>
+      <div class="panel panel-default">
+          
+          <div class="panel-body">
 
-<% @showings.each do |showing| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= showing.neighborhoods.to_sentence.titlecase %></h3>
-    </div>
-    <div class="panel-body">
-       <div class="col-md-2">
-        <%= link_to showing, class:"pull-left" do%>
-        <h3 class="text-center"><%= showing.date.strftime('%B') %></h3>
-        <img src=<%= "http://placehold.it/150/c0392b/ffffff&text=" + showing.date.strftime('%d') %> alt="..." >
-        <% end %> 
-      </div>  
+          <div class="row">
+            <div class="col-md-3">
+            <%= link_to showing, class:"pull-left" do%>
+            <img src=<%= "http://placehold.it/100/c0392b/ffffff&text=" + url_encode(showing.date.strftime('%b  %d')) %> alt="..." >
+            <% end %> 
+          </div>  
 
-    <div class="col-md-6">
-      <div class="row">
-       <div class="group">
-        <div class="one">
-          <%= showing.bedroom %>
+          <div class="col-md-8">
+            <div class="middle">
+              <h3><%= showing.neighborhoods.to_sentence.titlecase.truncate(28) %></h3>
+            <div class="row">
+             <div class="group">
+              <div class="one">
+                <%= showing.bedroom %>
+                </div>
+                <div class="two">
+                  From <%= showing.lower_price_range%>
+                  to <%= showing.upper_price_range%>
+                </div>
+                <div class="three">
+                 <%= pluralize( showing.apartments.count, 'apartment' ) %>
+
+               </div>
+              </div>
+            </div>
+           </div>
+            </div>
+          </div>
+
+           
+          <div class="row">
+           <div class="col-md-12">
+              <img src= "https://maps.googleapis.com/maps/api/staticmap?center=<%=showing.apartments.first.neighborhood%>,NY&zoom=14&size=100x100"/>
+
+            <% showing.apartments.each do |apartment| %>
+              <%= image_tag apartment.image.url(:thumb) %>
+              <% apartment.apartment_photos.first do |photo| %>
+              <%= link_to image_tag photo.photos.url(:thumb)%>
+              <% end %>
+            <% end %>
+             
+           </div> 
+          </div>
+
         </div>
-        <div class="two">
-          From <%= showing.lower_price_range%>
-          to <%= showing.upper_price_range%>
-        </div>
-        <div class="three">
-         <%= pluralize( showing.apartments.count, 'apartment' ) %>
+      
+      </div>
+    <% end %>
 
-       </div>
-     </div>
-         <div class="alert alert-warning" style="max-width:350px;">
-        Found Nest Bonus: <%= showing.Found_Nest_Bonus %>
+  </div>
 </div>
-     <div class="row">
-        <p>Details: <%= showing.details %></p>
-        <% showing.apartments.each do |apartment| %>
-        <%= image_tag apartment.image.url(:thumb) %>
-        <% apartment.apartment_photos.first do |photo| %>
-        <%= link_to image_tag photo.photos.url(:thumb)%>
-        <% end %>
-        <% end %>   
-      </div>
-    </div>
-      </div>
-      <div class="col-md-2">
-        <img src= "https://maps.googleapis.com/maps/api/staticmap?center=<%=showing.apartments.first.neighborhood%>,NY&zoom=14&size=400x400"/>
-      </div>
-    </div>
-  </div>  
-<% end %>
+
+
+
 
 
 <%= link_to 'New Showing', new_showing_path %>
