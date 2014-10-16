@@ -19,7 +19,7 @@ class Showing < ActiveRecord::Base
 		  			term = term.to_i
 		  		end
 
-					apartments = Apartment.where('price=? OR bedrooms LIKE ? OR neighborhood LIKE ?', term ? term.is_a?(Integer) : nil, term, term) 
+					apartments = Apartment.where('price=? OR bedrooms LIKE ? OR neighborhood LIKE ?', term.is_a?(Integer) ? term : nil, term, term) 
 
 		  		apartments.each do |apartment|
 		  			apartment_showings << ApartmentShowing.where(apartment_id: apartment.id)
