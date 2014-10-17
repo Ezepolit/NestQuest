@@ -18,7 +18,7 @@ class Showing < ActiveRecord::Base
 		  		if term.to_i > 0
 		  			term = term.to_i
 		  		end
-
+		  		
 					apartments = Apartment.where('price=? OR bedrooms LIKE ? OR neighborhood LIKE ?', term.is_a?(Integer) ? term : nil, term, term) 
 
 		  		apartments.each do |apartment|
