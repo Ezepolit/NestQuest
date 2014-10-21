@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010181334) do
+ActiveRecord::Schema.define(version: 20141021212302) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 20141010181334) do
     t.string   "bedroom"
     t.string   "lower_price_range"
     t.string   "upper_price_range"
+    t.string   "bathrooms"
   end
 
   add_index "showings", ["apartment_id"], name: "index_showings_on_apartment_id"
