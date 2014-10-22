@@ -5,6 +5,7 @@ class ApartmentsController < ApplicationController
   # GET /apartments.json
   def index
     @apartments = Apartment.all
+    @neighborhood = Neighborhood.all
   end
 
   # GET /apartments/1

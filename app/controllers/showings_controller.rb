@@ -6,6 +6,7 @@ class ShowingsController < ApplicationController
   # GET /showings.json
   def index
     @showings = Showing.search(params[:search])
+    #@neighborhood = Neighborhood.all
   end
 
   # GET /showings/1

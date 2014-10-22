@@ -30,7 +30,7 @@
   <p>
     <%= f.text_area :description, class:'form-control', style:'max-width:500px;', placeholder:'Description' %>
   </p>
-  <p>
+  <p> <h4> Date available for Move in: </h4>
     <%= f.date_select :move_date, class:'form-control', style:'max-width:500px;', placeholder:'Move Date' %>
   </p>
   <%= f.hidden_field :broker_id, value: current_broker.id %>

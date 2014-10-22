@@ -15,7 +15,11 @@
 
           <div class="col-md-8">
             <div class="middle">
-              <h3>Neighborhood</h3>
+              <%if showing.apartments.count==0%>
+                "New York"
+              <%else%>
+              <%= showing.apartments.first.neighborhood %>
+              <%end%>
             <div class="row">
              <div class="group">
               <div class="one">
@@ -38,7 +42,15 @@
            
           <div class="row">
            <div class="col-md-12">
+               <%if showing.apartments.count==0%>
+                <img src= "https://maps.googleapis.com/maps/api/staticmap?center=NY,NY&zoom=14&size=100x100"/>
+              <%else%>
               <img src= "https://maps.googleapis.com/maps/api/staticmap?center=<%=showing.apartments.first.neighborhood%>,NY&zoom=14&size=100x100"/>
+              <%end%>
+
+
+
+
 
             <% showing.apartments.each do |apartment| %>
               <%= image_tag apartment.image.url(:thumb) %>
@@ -63,3 +75,5 @@
 
 
 <%= link_to 'New Showing', new_showing_path %>
+
+

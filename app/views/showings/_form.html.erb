@@ -20,13 +20,15 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="well" style="max-width:540px;margin:auto;">
   
   <div class="field">
-    <%= f.label :date %><br>
+    <%= f.label :Tour_Date %><br>
     <%= f.date_select :date %>
   </div>
   <div class="field">
-    <%= f.label :time %><br>
+    <%= f.label :Tour_Time %><br>
     <%= f.time_select :time %>
   </div>
   <div class="field">
@@ -49,8 +51,7 @@
     <%= f.label :Found_Nest_Bonus %><br>
     <%= f.text_area :Found_Nest_Bonus %>
   </div>
-
-  <%= f.file_field :image %>
+  
 
 <!--   <div class="field_wrapper col-md-9"><input type="file" name="image[]" class="fileinput" id="fileupload" tabindex="18"><div id="uploadform0" style="display:visible">
             <input onchange="jQuery('#uploadform1').show();" type="file" name="image[]" class="fileinput" id="fileupload0" tabindex="18">
@@ -63,19 +64,28 @@
     <%= f.label :bedroom %><br>
     <%= f.select :bedroom, options_for_select(["Any Beds", "Studio only", "Studio / 1 br","1 bedroom","2 bedrooms","3 bedrooms","4 bedrooms"]) %>
 
-    <%= f.label :bathrooms %><br>
-    <%= f.select :bathrooms, options_for_select(["1 or more bathrooms", "1.5 or more bathrooms", "2 or more bathrooms","2.5 or more bathrooms","3 or more bathrooms","4 or more bathrooms","5 or more bathrooms"]) %>
-
   <div class="shrink_wrapped" id="beds_op_container" style="display: none;">  
     <input type="checkbox" name="beds_op" value=">=" se:behavior="field_hideable" se:hide_on_values=",<1, <=1" se:toggle_controller_selector="form#form select[name='beds']" se:element_to_toggle_selector="#beds_op_container" id="beds_or_more_checkbox">
     <label class="secondary" for="beds_or_more_checkbox" style="font-weight: normal;">or more</label>
-  </div>
-  
+  </div><br>
+  <div id="baths" class="criteria-field baths">
+  <label for="baths">Bathrooms</label><br>
+  <select name="baths" id="baths">
+    <option value="">Any Baths</option>
+<option value=">=1">1 or more</option>
+<option value=">=1.5">1.5 or more</option>
+<option value=">=2">2 or more</option>
+<option value=">=2.5">2.5 or more</option>
+<option value=">=3">3 or more</option>
+<option value=">=3.5">3.5 or more</option>
+<option value=">=4">4 or more</option>
+  </select>
+</div>
 <div id="price" class="criteria-field price rental">
   <label for="price_from"> Price </label>
   <div id="monthly_price" style="">
     <div id="price_from_container" class="">
-<%= f.select :lower_price_range, options_for_select(["$500","$750","$1,000","$1,250","$1,500","$1,750","$2,000","$2,250","$2,500","$2,750","$3,000","$3,250","$3,500","$3,750","$4,000","$4,500","$5,000","$6,000","$7,000","$8,000","$9,000","$10,000"])%>
+<%= f.select :lower_price_range, options_for_select(["$500","$750","$1,000","$1,250","$1,500","$1,750","$2,000","$2,250","$2,500","$2,750","$3,000","$3,500","$4,000","$4,500","$5,000","$6,000","$7,000","$8,000","$9,000","$10,000"])%>
     
       <div id="price_from_custom_container" class="custom_container" style="display: none;">
         <input type="text" id="price_from_ignore" name="price_from_ignore" value="$0" se:behavior="comma_separatable">
@@ -85,22 +95,25 @@
     <div id="price_to_text">to</div>
 
     <div id="price_to_container" class="">
-      <%= f.select :upper_price_range, options_for_select(["$500","$750","$1,000","$1,250","$1,500","$1,750","$2,000","$2,250","$2,500","$2,750","$3,000","$3,250","$3,500","$3,750","$4,000","$4,500","$5,000","$6,000","$7,000","$8,000","$9,000","$10,000"])%>
+      <%= f.select :upper_price_range, options_for_select(["$500","$750","$1,000","$1,250","$1,500","$1,750","$2,000","$2,500","$3,000","$3,500","$4,000","$4,500","$5,000","$6,000","$7,000","$8,000","$9,000","$10,000"])%>
       
       <div id="price_to_custom_container" class="custom_container" style="display: none;"> 
         <input type="text" id="price_to_ignore" name="price_to_ignore" value="$0" se:behavior="comma_separatable">
       </div>
+      <h4> Showing Image (optional) </h4>
+  <%= f.file_field :image %>
     </div> 
   </div>
 </div>
 
-
+<h4> Select Apartments to Include </h4>
+<select id="showing_apartment_ids" multiple="multiple" name="showing[apartment_ids][]">
     <%= f.collection_select(:apartment_ids, current_broker.apartments.all, :id, :title, {}, {multiple: true}) %>
 
 
   <div class="actions">
     <%= f.submit %>
   </div>
-
+</div>
 
 <% end %>
