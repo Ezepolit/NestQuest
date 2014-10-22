@@ -17,50 +17,46 @@
   <%= link_to("addUser", showing_users_path(:showing_user=>{:showing_id=> @showing}), method: :post) %>
 <% elsif current_broker == @showing.broker %>
   <%= link_to "View Signed Up Users", showing_users_path(tour: @showing.id) %>
+  <% @showing.users.each do |user| %>
+
+<p> <%= user.email%>   
+</p>
+<% end %>  
 <% end %>
 
 
-<% @showing.users.each do |user| %>
-
-<p> <%= user.email   %>   
-</p>
-<% end %>   
+ 
 
 <h1>
-  <%= @showing.neighborhoods.to_sentence %>
+  Tour Potential Nests in <%= @showing.neighborhoods.to_sentence %>
 </h1>
 
+<%= image_tag @showing.broker.avatar.url, class:'img-circle', height:'90px'  %>
+<%=@showing.broker.first_name%> <%=@showing.broker.last_name%>
 
 
-<%= image_tag @showing.image.url(:thumb) %>
 <p>
-  <strong>Date:</strong>
+  <strong>Quest Date:</strong>
   <%= @showing.date %>
 </p>
-<p>
-  <strong>Time:</strong>
-  <p><%= @showing.time.strftime('%I:%M %p') %></p>
-  <%= image_tag @showing.broker.avatar.url, class:'img-circle', height:'90px'  %>
 
-</p>
+  <p><strong>Quest Start Time:</strong> <p><%= @showing.time.strftime('%I:%M %p') %></p></p>
+
+
 <p>
-  <strong>Duration:</strong>
-  <%= @showing.duration %>
+  <strong>Estimated Quest Duration:</strong>
+  <%= @showing.duration %> hours
 </p>
 
 <p>
-  <strong>Duration:</strong>
-  <%= @showing.duration %>
-</p>
-
-<p>
-  <strong>Location:</strong>
+  <strong> Quest Start Location:</strong>
   <%= @showing.location %>
 </p>
 
 <p>
   <strong>Details:</strong>
-  <%= @showing.details %>
+  <%= @showing.details %><br>
+  <%= image_tag @showing.image.url(:large) %>
 </p>
 
 <% @showing.apartments.each do |apartment| %>
@@ -131,12 +127,12 @@
     </div>
     <div class="col-md-8">
       <h4> <%= apartment.title %></h4>
-      <p> <%= apartment.neighborhood %></p>
-      <p> <%= apartment.price %></p>
+      <p> Neighborhood: <%= apartment.neighborhood %></p>
+      <p> Rental Price: <%= apartment.price %></p>
       <p>Bedrooms: <%= apartment.bedrooms %></p>
       <p>Bathrooms: <%= apartment.bathrooms %></p>
-      <p> <%= apartment.description %></p>
-      <p> <%= apartment.move_date %></p>
+      <p> Apartment Details: <%= apartment.description %></p>
+      <p> Date Available: <%= apartment.move_date %> </p>
     </div>
 
 

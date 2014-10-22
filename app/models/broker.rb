@@ -3,6 +3,8 @@ class Broker < ActiveRecord::Base
 	has_many :showings
 	has_many :apartments
 	has_many :reviews
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
