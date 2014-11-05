@@ -3,6 +3,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 body{
   margin-bottom: 0;
@@ -27,6 +28,13 @@ body{
 
 .jumbotron {
   background: none;
+}
+.special{
+  width: auto;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .cta{
@@ -62,6 +70,21 @@ body{
   }
 
 }
+.btn-b{
+  @extend .btn-default;
+  font-size: 20px;
+  color: black;
+  float: right;
+  background: none;
+  &:hover, &:focus {
+      background: rgba(157, 156, 156, 0.12);
+
+    text-decoration: underline;
+    color: black;
+
+  }
+
+}
 
 
 footer {
@@ -87,16 +110,26 @@ footer {
 	border-width: 5px;
 	border-radius: 100%;
 }
+.bonus {
 
+  margin-bottom: 10px;
+  color: rgb(250, 43, 43);
+  font-weight: bold;
+}
 
 .group{
+  overflow:hidden;
+  
   display: inline-block;
-  padding: 10px;
-  padding-left: 13px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  width: inherit;
+
   div{
     padding: 10px;
     border: 2px solid gray;
-    display: inline-block;}
+    display: inline-block;
+    width: 33.3333333%;}
   .one{
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;}
@@ -111,9 +144,100 @@ footer {
   width: 21em;
 }
 
+.apartment_header{
+  font-size: 18px;
+  margin-left: 98px;
+}
+
+.spec {
+  width: auto;
+  padding:0;
+}
+
 .middle{
   margin-bottom: 15px;
   h3 {
     margin-top: 0;
   }
+}
+
+
+.carousel-row {
+    margin-bottom: 10px;
+}
+
+.slide-row {
+    padding: 0;
+    background-color: #ffffff;
+    min-height: 150px;
+    border: 1px solid #e7e7e7;
+    overflow: hidden;
+    height: auto;
+    position: relative;
+}
+
+
+.slide-carousel {
+    width: 20%;
+    float: left;
+    display: inline-block;
+}
+
+.slide-carousel .carousel-indicators {
+    margin-bottom: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+}
+
+.slide-carousel .carousel-indicators li {
+    border-radius: 0;
+    width: 20px;
+    height: 6px;
+}
+
+.slide-carousel .carousel-indicators .active {
+    margin: 1px;
+}
+
+.slide-content {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    display: block;
+    float: left;
+    width: 80%;
+    max-height: 76%;
+    padding: 1.5% 2% 2% 2%;
+    overflow-y: auto;
+}
+
+.slide-content h4 {
+    margin-bottom: 3px;
+    margin-top: 0;
+}
+
+.slide-footer {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 78%;
+    height: 20%;
+    margin: 1%;
+}
+
+/* Scrollbars */
+.slide-content::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+.slide-content::-webkit-scrollbar-thumb:vertical {
+  margin: 5px;
+  background-color: #999;
+  -webkit-border-radius: 5px;
+}
+ 
+.slide-content::-webkit-scrollbar-button:start:decrement,
+.slide-content::-webkit-scrollbar-button:end:increment {
+  height: 5px;
+  display: block;
 }

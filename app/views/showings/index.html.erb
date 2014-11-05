@@ -7,20 +7,30 @@
           <div class="panel-body">
 
           <div class="row">
-            <div class="col-md-3">
-            <%= link_to showing, class:"pull-left" do%>
-            <img src=<%= "http://placehold.it/100/c0392b/ffffff&text=" + url_encode(showing.date.strftime('%b  %d')) %> alt="..." >
-            <% end %> 
-          </div>  
-
-          <div class="col-md-8">
-            <div class="middle">
-              <%if showing.apartments.count==0%>
+           <div class="col-md-12">
+            <div class="col-md-3 spec">
+            
+            <img src=<%= "http://placehold.it/82/c0392b/ffffff&text=" + url_encode(showing.date.strftime('%b  %d')) %> alt="...", class="img-rounded"  >
+          
+            </div>    
+             <div class="apartment_header">
+             <%if showing.apartments.count==0%>
                 "New York"
               <%else%>
               <%= showing.apartments.first.neighborhood %>
               <%end%>
-            <div class="row">
+              <%= link_to 'View', showing, class:"btn btn-b btn-md", role:"button"%>
+
+          </div>  
+          </div>  
+
+          </div>
+
+         <div class="row">
+           <div class="col-md-12">
+          
+             
+      
              <div class="group">
               <div class="one">
                 <%= showing.bedroom %>
@@ -33,11 +43,21 @@
                  <%= pluralize( showing.apartments.count, 'Apt' ) %>
 
                </div>
-              </div>
+               </div>
+             
+               <div class="bonus">
+                 <% if showing.Found_Nest_Bonus? %>
+
+
+               <i class="fa fa-gift"></i>&nbsp;Found Nest Bonus: <%= number_to_currency showing.Found_Nest_Bonus%>
+               <%end%>
+               </div>
+               
+                        
             </div>
-           </div>
+           
             </div>
-          </div>
+          
 
            
           <div class="row">
