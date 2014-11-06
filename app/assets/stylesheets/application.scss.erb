@@ -26,6 +26,10 @@ body{
 }
 
 
+#notice {
+  color: green;
+}
+
 .jumbotron {
   background: none;
 }
@@ -86,6 +90,21 @@ body{
 
 }
 
+.btn-c{
+  @extend .btn-default;
+  font-size: 20px;
+  color: black;
+  float: left;
+  background: none;
+  &:hover, &:focus {
+      background: rgba(157, 156, 156, 0.12);
+
+    text-decoration: underline;
+    color: black;
+
+  }
+
+}
 
 footer {
   bottom: 0;
@@ -240,4 +259,170 @@ footer {
 .slide-content::-webkit-scrollbar-button:end:increment {
   height: 5px;
   display: block;
+}
+
+
+//colors
+$white: #ffffff;
+$color_flush_mahogany_approx: #c43c35;
+$color_carnation_approx: #ee5f5b;
+$black_25: rgba(0, 0, 0, 0.25);
+$color_burnt_umber_approx: #882a25;
+$black_10: rgba(0, 0, 0, 0.1);
+$color_fruit_salad_approx: #57a957;
+$color_fern_approx: #62c462;
+$color_killarney_approx: #3d773d;
+$color_boston_blue_approx: #339bb9;
+$color_viking_approx: #5bc0de;
+$color_elm_approx: #22697d;
+$black: #000000;
+$color_cape_cod_approx: #404040;
+$color_chalky_approx: #eedc94;
+$color_egg_white_approx: #fceec1;
+$color_ronchi_approx: #e4c652;
+$white_50: rgba(255, 255, 255, 0.5);
+$white_25: rgba(255, 255, 255, 0.25);
+
+//fonts
+$font_0: Arial;
+$font_1: sans-serif;
+$font_2: Helvetica Neue;
+$font_3: Helvetica;
+
+//@extend-elements
+//original selectors
+//.alert-message.danger, .alert-message.error
+%extend_1 {
+  background-color: $color_flush_mahogany_approx;
+  background-repeat: repeat-x;
+  background-image: linear-gradient(top, $color_carnation_approx, $color_flush_mahogany_approx);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color_carnation_approx', endColorstr='$color_flush_mahogany_approx', GradientType=0);
+  //Instead of the line below you could use @includetext-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  text-shadow: 0 -1px 0 $black_25;
+  border-color: $color_flush_mahogany_approx $color_flush_mahogany_approx $color_burnt_umber_approx;
+  border-color: $black_10 $black_10 $black_25;
+}
+
+
+.alerts {
+  margin: 20px;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+.alert-message {
+  font-family: $font_2, $font_3, $font_0, $font_1;
+  font-size: 13px;
+  position: relative;
+  padding: 7px 15px;
+  margin-bottom: 18px;
+  color: $color_cape_cod_approx;
+  background-color: $color_chalky_approx;
+  background-repeat: repeat-x;
+  background-image: linear-gradient(top, $color_egg_white_approx, $color_chalky_approx);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color_egg_white_approx', endColorstr='$color_chalky_approx', GradientType=0);
+  //Instead of the line below you could use @includetext-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  text-shadow: 0 -1px 0 $black_25;
+  border-color: $color_chalky_approx $color_chalky_approx $color_ronchi_approx;
+  border-color: $black_10 $black_10 $black_25;
+  //Instead of the line below you could use @includetext-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  text-shadow: 0 1px 0 $white_50;
+  border-width: 1px;
+  border-style: solid;
+  //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+  border-radius: 4px;
+  //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: inset 0 1px 0 $white_25;
+  &.danger {
+    color: $white;
+    @extend %extend_1;
+    &:hover {
+      color: $white;
+    }
+    p a {
+      color: $white;
+    }
+  }
+  &.error {
+    color: $white;
+    @extend %extend_1;
+    &:hover {
+      color: $white;
+    }
+    p a {
+      color: $white;
+    }
+  }
+  &.success {
+    color: $white;
+    background-color: $color_fruit_salad_approx;
+    background-repeat: repeat-x;
+    background-image: linear-gradient(top, $color_fern_approx, $color_fruit_salad_approx);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color_fern_approx', endColorstr='$color_fruit_salad_approx', GradientType=0);
+    //Instead of the line below you could use @includetext-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: 0 -1px 0 $black_25;
+    border-color: $color_fruit_salad_approx $color_fruit_salad_approx $color_killarney_approx;
+    border-color: $black_10 $black_10 $black_25;
+    p a {
+      color: $white;
+    }
+  }
+  &.info {
+    color: $white;
+    background-color: $color_boston_blue_approx;
+    background-repeat: repeat-x;
+    background-image: linear-gradient(top, $color_viking_approx, $color_boston_blue_approx);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color_viking_approx', endColorstr='$color_boston_blue_approx', GradientType=0);
+    //Instead of the line below you could use @includetext-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: 0 -1px 0 $black_25;
+    border-color: $color_boston_blue_approx $color_boston_blue_approx $color_elm_approx;
+    border-color: $black_10 $black_10 $black_25;
+    &:hover {
+      color: $white;
+    }
+    p a {
+      color: $white;
+    }
+  }
+  .close {
+    font-family: $font_0, $font_1;
+    line-height: 18px;
+    margin-top: 0;
+  }
+  a {
+    font-weight: bold;
+    color: $color_cape_cod_approx;
+    text-decoration: none;
+  }
+  p {
+    margin-bottom: 0;
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.close {
+  float: right;
+  color: $black;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 13.5px;
+  //Instead of the line below you could use @includetext-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  text-shadow: 0 1px 0 $white;
+  filter: alpha(opacity=25);
+  opacity: 0.25;
+  &:hover {
+    color: $black;
+    text-decoration: none;
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+  }
+}
+alert-message.success:hover {
+  color: $white;
+}
+:root .alert-message {
+  //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+  border-radius: 0 \0;
 }

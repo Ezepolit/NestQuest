@@ -19,6 +19,8 @@ class ShowingsController < ApplicationController
     # else
     #   @showing_user = nil
     # end
+
+    @broker = @showing.broker
   end
 
   # GET /showings/new

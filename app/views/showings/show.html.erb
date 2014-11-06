@@ -12,9 +12,17 @@
   ga('send', 'pageview');
 
 </script>
-<p id="notice"><%= notice %></p>
+
+
+<h1>
+  Tour Potential Nests in <%= @showing.neighborhoods.to_sentence %>
+</h1>
+
+
+
+
 <% if current_user %>
-  <%= link_to("addUser", showing_users_path(:showing_user=>{:showing_id=> @showing}), method: :post) %>
+  <%= link_to("Sign Up For This Tour!", showing_users_path(:showing_user=>{:showing_id=> @showing}), method: :post,  class:"btn btn-c btn-md", role:"button") %>
 <% elsif current_broker == @showing.broker %>
   <%= link_to "View Signed Up Users", showing_users_path(tour: @showing.id) %>
   <% @showing.users.each do |user| %>
@@ -23,19 +31,20 @@
 </p>
 <% end %>  
 <% end %>
-
-
- 
-
-<h1>
-  Tour Potential Nests in <%= @showing.neighborhoods.to_sentence %>
-</h1>
-
+<br>
+<br>
+<br>
+<br>
 <%= image_tag @showing.broker.avatar.url, class:'img-circle', height:'90px'  %>
-<%=@showing.broker.first_name%> <%=@showing.broker.last_name%>
+<h4><%=@showing.broker.first_name%> <%=@showing.broker.last_name%></h4>
 
 
 <p>
+
+<p>
+<strong>Broker Rating:</strong><br />
+<%= rating_for @broker, "average" %>
+</p>
   <strong>Quest Date:</strong>
   <%= @showing.date %>
 </p>

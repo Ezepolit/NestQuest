@@ -26,14 +26,15 @@
 </style>
 
 <%= render 'nav'%>
-<% if notice || alert %>
-  <p class="notice"></p>
-  <p class="alert"><%= alert %></p>
-<% end %>
+
 
 
 
 <div class="container">
+<% if notice || alert %>
+  <p class="alert alert-success"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+<% end %>
   <%= yield %>
 </div>
 

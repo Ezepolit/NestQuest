@@ -29,7 +29,7 @@ class ShowingUsersController < ApplicationController
 
     respond_to do |format|
       if @showing_user.save
-        format.html { redirect_to @showing_user, notice: 'Showing user was successfully created.' }
+        format.html { redirect_to :back, notice: 'Successfully Signed Up For This Tour!' }
         format.json { render :show, status: :created, location: @showing_user }
       else
         format.html { render :new }
