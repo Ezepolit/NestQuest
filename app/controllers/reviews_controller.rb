@@ -15,16 +15,20 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    @user = current_user
   end
 
   # GET /reviews/1/edit
   def edit
+     @user = current_user
   end
 
   # POST /reviews
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
+    @user = current_user
+    @broker = @review.broker
 
     respond_to do |format|
       if @review.save

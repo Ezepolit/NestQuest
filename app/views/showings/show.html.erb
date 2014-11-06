@@ -35,19 +35,33 @@
 <br>
 <br>
 <br>
-<%= image_tag @showing.broker.avatar.url, class:'img-circle', height:'90px'  %>
-<h4><%=@showing.broker.first_name%> <%=@showing.broker.last_name%></h4>
+
+<div class="row">
 
 
-<p>
+    <div class="col-lg-5">
+    <div class="jumbotron">
+<h4><%= image_tag @showing.broker.avatar.url, class:'img-circle', height:'90px'  %>&nbsp;&nbsp;
+<%=@showing.broker.first_name%> <%=@showing.broker.last_name%></h4>
+
+
+
 
 <p>
 <strong>Broker Rating:</strong><br />
 <%= rating_for @broker, "average" %>
+
 </p>
-  <strong>Quest Date:</strong>
-  <%= @showing.date %>
+<p>
+<h5>Add Feedback Or a Review For This Broker:</h5><br />
+<%= render 'reviews/form' %>
 </p>
+
+</div>
+</div>
+</div>
+ <p> <strong>Quest Date:</strong>
+  <%= @showing.date %></p>
 
   <p><strong>Quest Start Time:</strong> <p><%= @showing.time.strftime('%I:%M %p') %></p></p>
 

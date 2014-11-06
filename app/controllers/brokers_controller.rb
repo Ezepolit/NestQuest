@@ -26,6 +26,7 @@ class BrokersController < ApplicationController
   # POST /brokers.json
   def create
     @broker = Broker.new(broker_params)
+    @review = @broker.reviews.create(params[:review])
 
     respond_to do |format|
       if @broker.save

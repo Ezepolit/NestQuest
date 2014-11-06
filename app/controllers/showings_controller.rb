@@ -21,6 +21,7 @@ class ShowingsController < ApplicationController
     # end
 
     @broker = @showing.broker
+    @review = Review.new
   end
 
   # GET /showings/new

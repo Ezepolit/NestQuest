@@ -14,10 +14,16 @@ Rails.application.routes.draw do
   devise_for :users
   resources :amenities
 
-  resources :brokers
+  resources :brokers 
+  
+
   resources :apartments
   
-  resources :showings 
+  resources :showings do 
+     resources :brokers do
+    resources :reviews
+  end
+end
   resources :showing_users
   
   # The priority is based upon order of creation: first created -> highest priority.
