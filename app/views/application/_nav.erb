@@ -20,7 +20,7 @@
           <li><%= link_to 'Add Apartment', new_apartment_path %></li>
         <% end %>
         <% if current_user %>
-          <li><%= link_to 'Request Tour', new_showing_user_path%></li>
+          <li><%= link_to 'Request Custom Tour', "mailto:info@nestquest.me"%></li>
         <% end %>
       </ul>
       <%= form_tag showings_path, class:'navbar-form navbar-left', method: "get" do %>
